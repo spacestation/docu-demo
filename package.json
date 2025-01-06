@@ -1,0 +1,58 @@
+{
+  "name": "drive-integration",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "scripts": {
+    "build": "remix vite:build",
+    "dev": "remix vite:dev",
+    "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
+    "start": "remix-serve ./build/server/index.js",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.5.0",
+    "@remix-run/node": "^2.14.0",
+    "@remix-run/react": "^2.14.0",
+    "@remix-run/serve": "^2.14.0",
+    "@uppy/aws-s3": "^4.1.3",
+    "@uppy/box": "^3.1.2",
+    "@uppy/core": "^4.4.0",
+    "@uppy/dashboard": "^4.3.0",
+    "@uppy/drag-drop": "^4.0.5",
+    "@uppy/dropbox": "^4.1.2",
+    "@uppy/file-input": "^4.0.4",
+    "@uppy/google-drive": "^4.3.0",
+    "@uppy/onedrive": "^4.1.2",
+    "@uppy/progress-bar": "^4.1.0",
+    "@uppy/react": "^4.2.0",
+    "@uppy/transloadit": "^4.1.4",
+    "@uppy/xhr-upload": "^4.2.3",
+    "isbot": "^4.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^9.2.0"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "^2.14.0",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.7.4",
+    "@typescript-eslint/parser": "^6.7.4",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^8.38.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.1.6",
+    "vite": "^5.1.0",
+    "vite-tsconfig-paths": "^4.2.1"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
