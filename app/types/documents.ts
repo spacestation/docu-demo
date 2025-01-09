@@ -8,3 +8,10 @@ export interface Document {
   chunks_processed: number;
   error: string;
 }
+
+export interface DocumentStats {
+  document_id: string;
+  source: string;
+  chunk_count: number;
+  embedded_at: string;
+}

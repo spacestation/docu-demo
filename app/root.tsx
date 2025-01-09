@@ -18,6 +18,7 @@ export async function loader() {
     ENV: {
       GOOGLE_DRIVE_CLIENT_ID: process.env.GOOGLE_DRIVE_CLIENT_ID,
       GOOGLE_DRIVE_API_KEY: process.env.GOOGLE_DRIVE_API_KEY,
+      RAG_API_ENDPOINT: process.env.RAG_API_ENDPOINT,
     },
   });
 }
@@ -45,7 +46,6 @@ export default function App() {
           />
           <ScrollRestoration />
           <Scripts />
-          <LiveReload />
         </Provider>
       </body>
     </html>

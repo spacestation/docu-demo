@@ -1,40 +1,28 @@
-# Welcome to Remix!
+# Document Chat + RAG
 
-- 📖 [Remix docs](https://remix.run/docs)
+This is a simple email RAG system that uses the any custom API to generate
+contextual search results for emails in your Gmail inbox.
 
-## Development
+This repo extends Uppy React SDK to add a Gmail inbox picker and a
+button to upload emails to the S3 bucket.
 
-Run the dev server:
+At the core it uses the [Uppy Companion](https://uppy.io/docs/companion/)
+to upload email markdowns to a S3 compatible bucket and then uses the
+any RAG API to generate contextual search results.
 
-```shellscript
-npm run dev
-```
+RAG API is currently set to [Minerva](https://minerva.alexlazar.dev/docs#/)
+but can be easily swapped out for any other RAG API.
 
-## Deployment
+For a demo, see [here](https://chat.spacestationlabs.com).
 
-First, build your app for production:
+## 1. Setup
 
-```sh
-npm run build
-```
+1. Clone the repository
+2. Copy .env.local into .env, change the environment variables
+3. Install the dependencies
+4. Run the server
 
-Then run the app in production mode:
+## 2. Future Work
 
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+- [ ] Add Notion integration
+- [ ] Add LLM to generate conversation

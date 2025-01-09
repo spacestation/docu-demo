@@ -1,0 +1,30 @@
+steps:
+  # Docker build
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "--build-arg",
+        "GCLOUD_OAUTH_CLIENT_ID=$_GCLOUD_OAUTH_CLIENT_ID",
+        "--build-arg",
+        "GOOGLE_DRIVE_API_KEY=$_GOOGLE_DRIVE_API_KEY",
+        "--build-arg",
+        "GMAIL_API_KEY=$_GMAIL_API_KEY",
+        "--build-arg",
+        "GOOGLE_PROJECT_ID=$_GOOGLE_PROJECT_ID",
+        "--build-arg",
+        "COMPANION_URL=$_COMPANION_URL",
+        "--build-arg",
+        "GCS_ENDPOINT=$_GCS_ENDPOINT",
+        "-t",
+        "gcr.io/k-408822/github.com/spacestation/docu-demo:$BRANCH_NAME-$COMMIT_SHA",
+        ".",
+      ]
+
+    # Docker Push
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "push",
+        "gcr.io/k-408822/github.com/spacestation/docu-demo:$BRANCH_NAME-$COMMIT_SHA",
+      ]

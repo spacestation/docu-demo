@@ -1,0 +1,102 @@
+# Docudemo
+---
+version: 0.5
+
+env:
+  NAME: docudemo
+  IMAGE: gcr.io/k-408822/github.com/spacestation/docu-demo
+  PORT: 3000
+  HOST_PORT: 8005
+  NETWORK: shared
+  GITORIGIN: $(git rev-parse origin/master)
+
+networks:
+  local:
+    env:
+      ENV: dev
+      ENV_BRANCH: master
+      IMAGENAME: localhost/indiestories
+    hosts:
+      - localhost
+  production:
+    env:
+      ENV: production
+      ENV_BRANCH: master
+      IMAGENAME: ${IMAGE}:master-${GITORIGIN}
+    hosts:
+      - indiestories01
+
+commands:
+  pull:
+    desc: Pull latest Docker image
+    run: podman pull $IMAGENAME
+
+  stop:
+    desc: Stop Docker container
+    run: podman stop $NAME || exit 0
+
+  rm:
+    desc: Remove Docker container
+    run: podman rm $NAME || exit 0
+
+  kill:
+    desc: Kill Docker container
+    run: kill -9 $(podman container inspect $NAME -f '{{.State.Pid}}') || exit 0
+
+  build:
+    desc: Run Docker container
+    run: podman build -t $IMAGENAME .
+
+  run:
+    desc: Run Docker container
+    script: ./scripts/run.sh
+
+  ps:
+    desc: List running Docker containers
+    run: podman ps | grep $NAME
+
+  logs:
+    desc: Docker logs
+    run: podman logs $NAME
+
+  tail-logs:
+    desc: Tail Docker logs
+    run: podman logs -f --tail=20 $NAME
+
+  tail-access:
+    desc: Tail the access log
+    run: tail -f /data/traefik/access.log
+
+  pid:
+    desc: Get the podman pid
+    run: podman container inspect $NAME -f '{{.State.Pid}}'
+
+  allow-cors:
+    desc: Set bucket cors
+    local: ./scripts/allow-cors.sh
+
+  health:
+    desc: Check service healths
+    local: curl -sI https://docudemo.spacestationlabs.ltd
+
+targets:
+  restart:
+    - stop
+    - kill
+    - rm
+    - run
+
+  upgrade:
+    - pull
+    - kill
+    - rm
+    - run
+
+  deploy:
+    - pull
+    - kill
+    - rm
+    - run
+    - ps
+    - logs
+    - health
