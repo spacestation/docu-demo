@@ -13,7 +13,7 @@ any RAG API to generate contextual search results.
 RAG API is currently set to [Minerva](https://minerva.alexlazar.dev/docs#/)
 but can be easily swapped out for any other RAG API.
 
-For a demo, see [here](https://chat.spacestationlabs.com).
+For a demo, see [here](https://chat.spacestationlabs.ltd).
 
 ## 1. Setup
 
