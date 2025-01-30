@@ -10,7 +10,7 @@ At the core it uses the [Uppy Companion](https://uppy.io/docs/companion/)
 to upload email markdowns to a S3 compatible bucket and then uses the
 any RAG API to generate contextual search results.
 
-RAG API is currently set to [Minerva](https://minerva.alexlazar.dev/docs#/)
+RAG API is currently set to [Minerva](https://minerva.alexlazar.dev/docs#/) ([github](https://github.com/mauricedesaxe/minerva))
 but can be easily swapped out for any other RAG API.
 
 For a demo, see [here](https://chat.spacestationlabs.ltd).
